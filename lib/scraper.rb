@@ -21,6 +21,7 @@ class Scraper
 
 
   def print_courses
+    #calls on .make_courses and then iterates over all of the courses that gets created to puts out a list of course offerings. 
     self.make_courses
     Course.all.each do |course|
       if course.title
