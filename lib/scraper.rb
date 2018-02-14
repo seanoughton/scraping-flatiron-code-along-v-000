@@ -27,7 +27,12 @@ class Scraper
 
   def make_courses()
     #responsible for actually instantiating Course objects and giving each course object the correct title, schedule and description attribute that we scraped from the page.
-    self.get_courses
+    self.get_courses.each do |post|
+      course = Course.new
+      course.title = post.css("h2").text
+      course.schedule = post.css(".date").text
+      course.description = post.css("p").text
+    end
   end
 
 
